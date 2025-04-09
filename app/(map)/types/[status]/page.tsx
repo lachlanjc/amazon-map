@@ -26,7 +26,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${status.label} Amazon Sites`,
+    title: `Amazon ${status.labelName}s`,
     description: `List of Amazon ${status.label.toLowerCase()}.`,
   };
 }
@@ -36,20 +36,23 @@ export default async function Page({
 }: {
   params: Promise<{ status: string }>;
 }) {
-  const { status: statusKey } = await params;
-  const status = siteTypes[statusKey];
-  if (!status) {
+  const { status: typeSlug } = await params;
+  const typeEntry = Object.entries(siteTypes).find(
+    ([, value]) => value.slug === typeSlug,
+  );
+  if (!typeEntry) {
     return notFound();
   }
-  const sites = allSites.filter((site) => site.type === statusKey);
+  const [typeKey, siteType] = typeEntry;
+  const sites = allSites.filter((site) => site.type === typeKey);
 
   return (
     <>
       {/* <MapZoom center={[state.lat, state.lng]} zoom={state.zoom + 2} /> */}
       <HeaderRoot>
         <HeaderBreadcrumb href="/types">Explore by Type</HeaderBreadcrumb>
-        <HeaderTitle style={{ viewTransitionName: statusKey }}>
-          {status.label} <Count value={sites.length} />
+        <HeaderTitle style={{ viewTransitionName: typeSlug }}>
+          {siteType.label} <Count value={sites.length} />
         </HeaderTitle>
       </HeaderRoot>
       {STATES.map((state) => {
