@@ -35,7 +35,7 @@ export default function Page() {
               role="listitem"
               className="flex w-full gap-3 group items-center even:justify-end md:max-w-md py-4"
             >
-              <Link href={`/types/${key}`} className="contents">
+              <Link href={`/types/${siteTypes[key].slug}`} className="contents">
                 <span
                   className={`${status.color} origin-left bg-current w-4 h-4 rounded-full inline-block relative -z-1`}
                   style={typeStyle[key]}
