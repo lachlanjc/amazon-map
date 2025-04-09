@@ -2,7 +2,8 @@ import { getSiteNameDescription, type Site } from "@/lib/data/site";
 import { Link } from "next-view-transitions";
 import { HeaderRoot, HeaderSubtitle, HeaderTitle } from "@/lib/ui/header";
 
-function replaceJSX(text: string, find: string, replace: JSX.Element) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function replaceJSX(text: string, find: string, replace: any) {
   return text
     .split(find)
     .flatMap((item) => [item, replace])

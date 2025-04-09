@@ -1,6 +1,6 @@
 import { SiteType, siteTypes } from "@/lib/data/site";
 import { allSites } from "@/lib/data/api";
-import { HeaderRoot, HeaderSubtitle, HeaderTitle } from "@/lib/ui/header";
+import { HeaderRoot, HeaderTitle } from "@/lib/ui/header";
 import { Link } from "next-view-transitions";
 import { Count } from "@/lib/ui/count";
 
@@ -26,7 +26,7 @@ export default function Page() {
         </HeaderSubtitle> */}
       </HeaderRoot>
       <ul className="-mb-1 text-neutral-500 gap-8 flex flex-col" role="list">
-        {Object.keys(siteTypes).map((key, i) => {
+        {Object.keys(siteTypes).map((key) => {
           const status = siteTypes[key];
           const count = allSites.filter((site) => site.type === key).length;
           return (

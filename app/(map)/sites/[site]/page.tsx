@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { SiteCard } from "./site";
 import { allSites, findSiteById } from "@/lib/data/api";
 import { MapZoom } from "../../zoom";
-import { Suspense } from "react";
 import { getSiteNameDescription } from "@/lib/data/site";
 
 export const generateStaticParams = async () => {
@@ -39,7 +38,7 @@ export default async function Page({
 
   return (
     <>
-      <MapZoom center={[site.lat, site.lng]} />
+      {site.lat && site.lng && <MapZoom center={[site.lat, site.lng]} />}
       <SiteCard site={site}></SiteCard>
     </>
   );

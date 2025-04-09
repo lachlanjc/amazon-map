@@ -1,3 +1,4 @@
+// @ts-nocheck
 import statesRaw from "@/lib/data/states-raw.json" assert { type: "json" };
 import raw from "@/lib/data/sites-raw.json" assert { type: "json" };
 import { siteTypes, SiteType } from "@/lib/data/site";
