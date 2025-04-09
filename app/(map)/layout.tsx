@@ -2,6 +2,7 @@
 
 import { PropsWithChildren, useEffect, useRef } from "react";
 import { Drawer } from "vaul";
+import { RemoveScroll } from "react-remove-scroll";
 import "mapbox-gl/dist/mapbox-gl.css";
 import SITES from "@/lib/data/sites-mini.json" assert { type: "json" };
 
@@ -20,15 +21,17 @@ function MainCard({
       <Drawer.Portal>
         <Drawer.Content
           {...props}
-          className="main-card backdrop-blur-lg backdrop-saturate-150 flex flex-col w-full md:max-w-md p-4 md:p-6 mx-auto font-mono !overflow-y-auto z-10 md:max-h-[50vh] fixed bottom-0 max-md:left-0 max-md:right-0 outline-none md:absolute md:left-8 md:bottom-8 rounded-t-xl md:rounded-2xl @container text-sm leading-relaxed !select-auto isolate transition-discrete transition-[height]"
+          className="main-card backdrop-blur-lg backdrop-saturate-150 flex flex-col w-full md:max-w-md p-4 md:p-6 mx-auto font-mono z-10 md:max-h-[50vh] fixed bottom-0 max-md:left-0 max-md:right-0 outline-none md:absolute md:left-8 md:bottom-8 rounded-t-xl md:rounded-2xl @container text-sm leading-relaxed !select-auto isolate transition-discrete transition-[height]"
           data-vaul-custom-container
         >
-          {title && (
-            <Drawer.Title className="text-balance font-bold font-sans text-3xl">
-              {title}
-            </Drawer.Title>
-          )}
-          {children}
+          <RemoveScroll className="!overflow-y-auto">
+            {title && (
+              <Drawer.Title className="text-balance font-bold font-sans text-3xl">
+                {title}
+              </Drawer.Title>
+            )}
+            {children}
+          </RemoveScroll>
         </Drawer.Content>
       </Drawer.Portal>
     </Drawer.Root>
