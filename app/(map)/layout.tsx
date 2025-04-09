@@ -20,7 +20,7 @@ function MainCard({
       <Drawer.Portal>
         <Drawer.Content
           {...props}
-          className="main-card backdrop-blur-lg backdrop-saturate-150 flex flex-col w-full md:max-w-md p-4 md:p-6 mx-auto font-mono !overflow-y-auto z-10 md:max-h-[50vh] fixed bottom-0 max-md:left-0 max-md:right-0 outline-none md:absolute md:left-8 md:bottom-8 rounded-t-xl md:rounded-2xl @container text-sm leading-relaxed !select-auto isolate transition-discrete transition-[height]"
+          className="main-card backdrop-blur-lg backdrop-saturate-150 flex flex-col w-full md:max-w-md p-4 md:p-6 mx-auto font-mono !overflow-y-auto z-10 max-h-[60vh] md:max-h-[50vh] fixed bottom-0 max-md:left-0 max-md:right-0 outline-none md:absolute md:left-8 md:bottom-8 rounded-t-xl md:rounded-2xl @container text-sm leading-relaxed !select-auto isolate transition-discrete transition-[height]"
           data-vaul-custom-container
         >
           {title && (
