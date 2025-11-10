@@ -1,7 +1,7 @@
 import { SiteType, siteTypes } from "@/lib/data/site";
 import { allSites } from "@/lib/data/api";
 import { HeaderRoot, HeaderTitle } from "@/lib/ui/header";
-import { Link } from "next-view-transitions";
+import { Link } from "next";
 import { Count } from "@/lib/ui/count";
 
 export const metadata = {

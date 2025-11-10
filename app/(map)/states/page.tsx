@@ -1,7 +1,7 @@
 import STATES from "@/lib/data/states.json" assert { type: "json" };
 import { HeaderRoot, HeaderTitle } from "@/lib/ui/header";
 import { Metadata } from "next";
-import { Link } from "next-view-transitions";
+import { Link } from "next";
 
 function List({ states }: { states: typeof STATES }) {
   return (

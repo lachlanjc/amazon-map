@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Familjen_Grotesk, Martian_Mono } from "next/font/google";
 import "./globals.css";
-import { ViewTransitions } from "next-view-transitions";
 
 const familjenGrotesk = Familjen_Grotesk({
   variable: "--font-familjen-grotesk",
@@ -25,8 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en">
+      <html lang="en-US">
         <body
           className={`${familjenGrotesk.variable} ${martianMono.variable} antialiased`}
           data-appearance="light"
@@ -34,6 +32,5 @@ export default function RootLayout({
           {children}
         </body>
       </html>
-    </ViewTransitions>
   );
 }

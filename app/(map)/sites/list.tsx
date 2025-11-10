@@ -1,5 +1,5 @@
 import { siteTypes, Site, SiteType } from "@/lib/data/site";
-import { Link } from "next-view-transitions";
+import { Link } from "next";
 
 function SiteTypeIcon({
   status,

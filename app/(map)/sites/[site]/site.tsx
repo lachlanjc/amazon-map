@@ -1,5 +1,5 @@
 import { getSiteNameDescription, type Site } from "@/lib/data/site";
-import { Link } from "next-view-transitions";
+import { Link } from "next";
 import { HeaderRoot, HeaderSubtitle, HeaderTitle } from "@/lib/ui/header";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
