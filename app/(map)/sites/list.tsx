@@ -1,5 +1,5 @@
 import { siteTypes, Site, SiteType } from "@/lib/data/site";
-import { Link } from "next";
+import Link from "next/link";
 
 function SiteTypeIcon({
   status,

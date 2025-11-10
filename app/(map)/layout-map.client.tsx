@@ -66,12 +66,12 @@ const initialViewState = {
 };
 
 const statusFillColors: Record<SiteType, string> = {
-    fc: "fill-orange-500",
-    dist: "fill-amber-500",
-    reverse: "fill-violet-500",
-    office: "fill-amber-500",
-    // office: "fill-indigo-500 opacity-70",
-  };
+  fc: "#ff6900",
+  dist: "#f0b100",
+  reverse: "#8e51ff",
+  office: "#ff4921",
+  // office: "fill-indigo-500 opacity-70",
+};
   
 const siteLayerId = "site-points";
 
@@ -130,18 +130,18 @@ export default function MapLayoutClient({
         type: "FeatureCollection",
         features: SITES.map((marker) => ({
           type: "Feature",
-          id: marker.id,
+          id: marker.name,
           geometry: {
             type: "Point",
             coordinates: [marker.lng, marker.lat],
           },
           properties: {
-            id: marker.id,
+            name: marker.name,
             color:
               statusFillColors[marker.type as SiteType] ??
-              statusFillColors.listed,
+              statusFillColors.fc,
             dimmed: Boolean(activeSiteType && activeSiteType !== marker.type),
-            selected: Boolean(activeSiteId && activeSiteId === marker.id),
+            selected: Boolean(activeSiteId && activeSiteId === marker.name),
           },
         })),
       }) satisfies FeatureCollection<Point, Record<string, unknown>>,
@@ -149,8 +149,9 @@ export default function MapLayoutClient({
   );
 
   const handleMapClick = (event: MapMouseEvent) => {
-    const feature = event.features?.[0];
-    const featureId = feature?.properties?.id;
+      const feature = event.features?.[0];
+      console.log(event.features,feature);
+    const featureId = feature?.id ?? feature?.properties?.name;
     if (featureId && typeof featureId === "string") {
       router.push(`/sites/${featureId}`);
     }

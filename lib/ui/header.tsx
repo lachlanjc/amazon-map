@@ -1,6 +1,6 @@
 "use client";
 import { LinkProps } from "next/link";
-import { Link } from "next";
+import Link from "next/link";
 import { Drawer } from "vaul";
 import { Title } from "./typography";
 import { ComponentProps } from "react";

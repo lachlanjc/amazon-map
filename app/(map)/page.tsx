@@ -1,7 +1,7 @@
 import { Search } from "@/app/(map)/sites/search";
 import { siteTypes } from "@/lib/data/site";
 import { HeaderRoot, HeaderTitle } from "@/lib/ui/header";
-import { Link } from "next";
+import Link from "next/link";
 
 export default function Page() {
   return (
