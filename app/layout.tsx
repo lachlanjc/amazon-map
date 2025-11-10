@@ -24,13 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en-US">
-        <body
-          className={`${familjenGrotesk.variable} ${martianMono.variable} antialiased`}
-          data-appearance="light"
-        >
-          {children}
-        </body>
-      </html>
+    <html lang="en-US">
+      <body
+        className={`${familjenGrotesk.variable} ${martianMono.variable} antialiased`}
+        data-appearance="light"
+      >
+        {children}
+      </body>
+    </html>
   );
 }
