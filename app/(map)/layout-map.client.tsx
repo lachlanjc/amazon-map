@@ -22,8 +22,8 @@ import MapComponent, {
   NavigationControl,
   Source,
 } from "react-map-gl/mapbox";
-import type {  SiteType } from "@/lib/data/site";
-import SITES from "@/lib/data/sites-mini.json" with { type: "json" };
+import type { SiteType } from "@/lib/data/site";
+import SITES from "@/lib/data/sites-mini.json" assert { type: "json" };
 
 function MainCard({
   title,
@@ -72,7 +72,7 @@ const statusFillColors: Record<SiteType, string> = {
   office: "#ff4921",
   // office: "fill-indigo-500 opacity-70",
 };
-  
+
 const siteLayerId = "site-points";
 
 const siteCircleLayer: LayerProps = {
@@ -125,32 +125,32 @@ export default function MapLayoutClient({
   const siteGeojson = useMemo<
     FeatureCollection<Point, Record<string, unknown>>
   >(
-    () =>
-      ({
-        type: "FeatureCollection",
-        features: SITES.map((marker) => ({
-          type: "Feature",
-          id: marker.name,
-          geometry: {
-            type: "Point",
-            coordinates: [marker.lng, marker.lat],
-          },
-          properties: {
-            name: marker.name,
-            color:
-              statusFillColors[marker.type as SiteType] ??
-              statusFillColors.fc,
-            dimmed: Boolean(activeSiteType && activeSiteType !== marker.type),
-            selected: Boolean(activeSiteId && activeSiteId === marker.name),
-          },
-        })),
-      }) satisfies FeatureCollection<Point, Record<string, unknown>>,
+    () => ({
+      type: "FeatureCollection",
+      features: SITES.filter(
+        (marker) =>
+          typeof marker.lng === "number" && typeof marker.lat === "number"
+      ).map((marker) => ({
+        type: "Feature",
+        id: marker.name,
+        geometry: {
+          type: "Point",
+          coordinates: [marker.lng as number, marker.lat as number],
+        },
+        properties: {
+          name: marker.name,
+          color:
+            statusFillColors[marker.type as SiteType] ?? statusFillColors.fc,
+          dimmed: Boolean(activeSiteType && activeSiteType !== marker.type),
+          selected: Boolean(activeSiteId && activeSiteId === marker.name),
+        },
+      })),
+    }),
     [activeSiteType, activeSiteId]
   );
 
   const handleMapClick = (event: MapMouseEvent) => {
-      const feature = event.features?.[0];
-      console.log(event.features,feature);
+    const feature = event.features?.[0];
     const featureId = feature?.id ?? feature?.properties?.name;
     if (featureId && typeof featureId === "string") {
       router.push(`/sites/${featureId}`);
